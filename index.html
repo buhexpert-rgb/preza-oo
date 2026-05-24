@@ -1,0 +1,507 @@
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Ольга Окунева | Бухгалтерские услуги и кейсы</title>
+    <!-- Google Fonts для современной типографики -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (free icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f5f7fc;
+            color: #1a2634;
+            line-height: 1.4;
+            scroll-behavior: smooth;
+        }
+
+        /* Контейнер — адаптивный отступ */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* ========= 1. ГРАДИЕНТНЫЙ ЗАГОЛОВОК С ПРОЗРАЧНОСТЬЮ ========= */
+        .hero {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .gradient-title {
+            font-size: clamp(2.2rem, 8vw, 4.2rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #0B2F5F, #2A6F8F, #4B9BBF);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+            animation: shimmer 6s ease infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .subhead {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #2c4c6e;
+            border-bottom: 2px solid rgba(43, 111, 143, 0.3);
+            display: inline-block;
+            padding-bottom: 0.35rem;
+            margin-top: 0.25rem;
+        }
+
+        .name-highlight {
+            font-size: 1.7rem;
+            font-weight: 700;
+            margin-top: 0.6rem;
+            color: #0f3b5c;
+            letter-spacing: -0.3px;
+        }
+
+        /* ========= Общие стили секций ========= */
+        section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(120deg, #1f5e7e, #0f3b5c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60%;
+            height: 3px;
+            background: #4b9bbf;
+            border-radius: 3px;
+        }
+
+        /* Сетка карточек навыков / услуг */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.8rem;
+            margin-top: 1rem;
+        }
+
+        /* Карточки с анимацией при наведении */
+        .service-card {
+            background: white;
+            border-radius: 1.75rem;
+            padding: 1.6rem 1.5rem;
+            box-shadow: 0 12px 28px -8px rgba(0, 32, 64, 0.08);
+            transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            border: 1px solid rgba(75, 155, 191, 0.15);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #2a6f8f, #6fc1df);
+            transition: height 0.3s;
+            z-index: 0;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 36px -12px rgba(0, 60, 80, 0.2);
+            border-color: rgba(75, 155, 191, 0.4);
+        }
+
+        .service-card:hover::before {
+            height: 8px;
+        }
+
+        .card-icon {
+            font-size: 2.2rem;
+            color: #2a6f8f;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.45rem;
+            font-weight: 700;
+            margin-bottom: 0.9rem;
+            color: #0f3b5c;
+        }
+
+        .service-card p {
+            color: #2c3e4e;
+            line-height: 1.45;
+            font-size: 0.95rem;
+        }
+
+        /* Список маркированных пунктов внутри карточек */
+        .feature-list {
+            margin-top: 0.9rem;
+            padding-left: 1.2rem;
+        }
+        .feature-list li {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: #2c3e4e;
+        }
+
+        /* ======= КЕЙСЫ - ВЫДЕЛЕННЫЕ БЛОКИ ======= */
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .case-block {
+            background: linear-gradient(145deg, #ffffff, #f9fafc);
+            border-radius: 1.5rem;
+            padding: 1.8rem;
+            border-left: 8px solid #4b9bbf;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.02);
+            transition: 0.25s;
+        }
+
+        .case-block:hover {
+            transform: scale(1.01);
+            box-shadow: 0 16px 28px -12px rgba(43, 111, 143, 0.2);
+        }
+
+        .case-tag {
+            display: inline-block;
+            background: rgba(43, 111, 143, 0.1);
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #1c6c8c;
+            margin-bottom: 1rem;
+            letter-spacing: 0.3px;
+        }
+
+        .case-block h4 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #0e2d44;
+        }
+
+        .highlight-number {
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: #c97e2c;
+            background: #fff2e5;
+            display: inline-block;
+            padding: 0.2rem 0.7rem;
+            border-radius: 40px;
+            margin: 0.7rem 0 0.5rem;
+        }
+
+        .case-desc {
+            color: #2c3e4e;
+            font-size: 0.95rem;
+            line-height: 1.45;
+        }
+
+        /* ===== СЕТКА ИНСТРУМЕНТОВ (ТЕГИ) ===== */
+        .tools-section {
+            background: #eef3f8;
+            border-radius: 2rem;
+            padding: 1.8rem 1.5rem;
+            margin: 2rem 0 2.5rem;
+        }
+        .tools-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            color: #144d6b;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .tags-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+        .tool-tag {
+            background: white;
+            padding: 0.6rem 1.3rem;
+            border-radius: 60px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #1f5e7e;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            transition: all 0.2s;
+            border: 1px solid rgba(75, 155, 191, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .tool-tag i {
+            font-size: 1rem;
+            color: #2a6f8f;
+        }
+        .tool-tag:hover {
+            background: #2a6f8f;
+            color: white;
+            transform: translateY(-3px);
+            border-color: #2a6f8f;
+        }
+        .tool-tag:hover i {
+            color: white;
+        }
+
+        /* акцентные элементы */
+        .accent-badge {
+            background: #ffe6d5;
+            border-radius: 40px;
+            padding: 0.3rem 1rem;
+            color: #b45f2b;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+        hr {
+            margin: 2rem 0;
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, #cbdde6, transparent);
+        }
+
+        /* ===== АДАПТИВНОСТЬ ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem 1rem;
+            }
+            .service-card h3 {
+                font-size: 1.3rem;
+            }
+            .case-block h4 {
+                font-size: 1.2rem;
+            }
+            .gradient-title {
+                line-height: 1.2;
+            }
+            .name-highlight {
+                font-size: 1.3rem;
+            }
+            .tools-section {
+                padding: 1.2rem;
+            }
+        }
+
+        /* дополнительная четкость иерархии */
+        .small-meta {
+            font-size: 0.8rem;
+            color: #5b7c99;
+            margin-top: 0.3rem;
+        }
+        .flex-between {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e2ecf2;
+            font-size: 0.8rem;
+            color: #5f7f99;
+        }
+        .btn-accent {
+            background: none;
+            border: none;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Градиентный заголовок с прозрачностью -->
+    <div class="hero">
+        <h1 class="gradient-title">Услуги и кейсы</h1>
+        <div class="name-highlight">Окунева Ольга Викторовна</div>
+        <div class="small-meta" style="margin-top: 0.75rem;">Профессиональный бухгалтерский эксперт</div>
+        <div class="subhead">Спокойная, безопасная и понятная бухгалтерия</div>
+    </div>
+
+    <!-- 1. Все услуги (карточки навыков) -->
+    <section>
+        <div class="flex-between">
+            <h2 class="section-title">Все услуги для вашего бизнеса</h2>
+            <span class="accent-badge"><i class="fas fa-shield-alt"></i> Надёжность и прозрачность</span>
+        </div>
+        <div class="services-grid">
+            <!-- Налоговая консультация -->
+            <div class="service-card">
+                <div class="card-icon"><i class="fas fa-calculator"></i></div>
+                <h3>Налоговая консультация</h3>
+                <p>Разбор вашей ситуации, проверка рисков, подбор выгодного режима, ответы на вопросы простым языком.</p>
+                <ul class="feature-list">
+                    <li>✔ Анализ налоговой нагрузки</li>
+                    <li>✔ Юридически значимые рекомендации</li>
+                </ul>
+            </div>
+            <!-- Бухгалтерское сопровождение -->
+            <div class="service-card">
+                <div class="card-icon"><i class="fas fa-file-invoice"></i></div>
+                <h3>Бухгалтерское сопровождение</h3>
+                <p>Полный учёт, отчётность, контроль налогов, работа с документами, зарплата, требования ФНС.</p>
+                <ul class="feature-list">
+                    <li>✔ Ежемесячное закрытие без ошибок</li>
+                    <li>✔ Сверка с ИФНС и фондами</li>
+                </ul>
+            </div>
+            <!-- Постановка учета с нуля -->
+            <div class="service-card">
+                <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>Постановка учета с нуля</h3>
+                <p>Выстраиваю систему учёта «под ключ»: счета, регистры, процессы, документы, регламенты.</p>
+                <ul class="feature-list">
+                    <li>✔ Автоматизация процессов</li>
+                    <li>✔ Прозрачная финансовая модель</li>
+                </ul>
+            </div>
+            <!-- Управленческий учет -->
+            <div class="service-card">
+                <div class="card-icon"><i class="fas fa-chart-pie"></i></div>
+                <h3>Управленческий учет</h3>
+                <p>Показываю реальные цифры: маржа, рентабельность, движение денег, точки роста, что зарабатывает, что тянет вниз.</p>
+                <ul class="feature-list">
+                    <li>✔ Дашборды для владельца</li>
+                    <li>✔ Анализ эффективности</li>
+                </ul>
+            </div>
+            <!-- Финансовое планирование -->
+            <div class="service-card">
+                <div class="card-icon"><i class="fas fa-chart-simple"></i></div>
+                <h3>Финансовое планирование</h3>
+                <p>Помогаю собственнику видеть будущее бизнеса: бюджеты, прогнозы, налоговая нагрузка, сценарии.</p>
+                <ul class="feature-list">
+                    <li>✔ Cash-flow прогноз на 12 мес</li>
+                    <li>✔ План-факт анализ</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Кейсы и результаты (выделенные блоки) -->
+    <section>
+        <h2 class="section-title">Кейсы и результаты</h2>
+        <div class="cases-grid">
+            <!-- Кейс 1 -->
+            <div class="case-block">
+                <div class="case-tag"><i class="fas fa-chart-line"></i> Оптимизация налогов</div>
+                <h4>Сэкономила 12,75 млн ₽ за год за счет перехода на УСН и выбора правильной ставки НДС</h4>
+                <p class="case-desc">Группа компаний работала на ОСНО. Нужно было снизить налоговую нагрузку без дробления и рисков. Посчитала варианты перехода на УСН. Зафиксировала оптимальную схему с начала года.</p>
+                <div class="highlight-number"><i class="fas fa-coins"></i> -12,75 млн ₽ экономии</div>
+                <div class="small-meta">Результат: легальное снижение налогового бремени</div>
+            </div>
+            <!-- Кейс 2 -->
+            <div class="case-block">
+                <div class="case-tag"><i class="fas fa-shield-virus"></i> Защита от проверок</div>
+                <h4>Снижаю налоговые риски заранее — как удалось сэкономить 30 млн рублей</h4>
+                <p class="case-desc">Сохранили вычеты по НДС и расходы по налогу на прибыль. Клиент получил требование по контрагентам, которое могло «аукнуться» выездной проверкой. Доказала добросовестность и убрала угрозу доначислений.</p>
+                <div class="highlight-number"><i class="fas fa-sack-dollar"></i> Предотвращено 30 млн ₽ доначислений</div>
+                <div class="small-meta">Кейс: полное снятие претензий ФНС</div>
+            </div>
+            <!-- Кейс 3 -->
+            <div class="case-block">
+                <div class="case-tag"><i class="fas fa-gavel"></i> Минимизация штрафов</div>
+                <h4>Предотвратила крупные штрафы: снизила штраф с 3,8 млн до 500 ₽</h4>
+                <p class="case-desc">Компания могла бы попасть на крупный штраф, если бы неправильно ответила на требование. Подняла документы, объяснила ситуацию и избежала доначислений. Штраф снижен почти до символической суммы.</p>
+                <div class="highlight-number"><i class="fas fa-ban"></i> 3,8 млн ₽ → 500 ₽</div>
+                <div class="small-meta">Защита интересов клиента перед ФНС</div>
+            </div>
+        </div>
+        <!-- Дополнительный акцент: три преимущества из текста пользователя (добавлено в виде выделенной линии) -->
+        <div style="background: #e5f0f6; border-radius: 1.5rem; padding: 1.2rem 1.8rem; margin-top: 2rem;">
+            <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; align-items: center;">
+                <span><i class="fas fa-check-circle" style="color:#2a6f8f;"></i> Подбираю налоговый режим, который выгоден именно вам</span>
+                <span><i class="fas fa-chart-line" style="color:#2a6f8f;"></i> Снижаю риски заранее</span>
+                <span><i class="fas fa-file-signature" style="color:#2a6f8f;"></i> Предотвращаю штрафы и проверки</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Сетка инструментов в виде тегов (финансово-бухгалтерские инструменты) -->
+    <div class="tools-section">
+        <div class="tools-title">
+            <i class="fas fa-microchip"></i> Профессиональные инструменты & технологии
+        </div>
+        <div class="tags-grid">
+            <span class="tool-tag"><i class="fab fa-1c"></i> 1С:Бухгалтерия</span>
+            <span class="tool-tag"><i class="fas fa-cloud-upload-alt"></i> ЭДО / Контур.Диадок</span>
+            <span class="tool-tag"><i class="fas fa-chart-line"></i> Power BI / Финансовая аналитика</span>
+            <span class="tool-tag"><i class="fas fa-file-invoice-dollar"></i> СБИС / Такском</span>
+            <span class="tool-tag"><i class="fas fa-chart-pie"></i> Управленческие дашборды</span>
+            <span class="tool-tag"><i class="fas fa-calculator"></i> Налоговое планирование</span>
+            <span class="tool-tag"><i class="fas fa-laptop-code"></i> Excel / Гугл Таблицы (продвинутые модели)</span>
+            <span class="tool-tag"><i class="fas fa-shield-alt"></i> Риск-менеджмент ФНС</span>
+            <span class="tool-tag"><i class="fas fa-chart-simple"></i> Бюджетирование / Финансовые модели</span>
+        </div>
+        <div class="small-meta" style="margin-top: 1rem;">* полный стек для безопасного и эффективного сопровождения бизнеса</div>
+    </div>
+
+    <!-- Адаптивная иерархия + акцентный элемент: краткое резюме услуги "под ключ" -->
+    <div style="display: flex; flex-wrap: wrap; gap: 1.2rem; justify-content: space-between; align-items: center; background: white; border-radius: 1.2rem; padding: 1rem 1.8rem; margin-top: 1rem; box-shadow: 0 6px 14px rgba(0,0,0,0.02);">
+        <div><i class="fas fa-chart-column" style="color:#2f86a6;"></i> <strong>Бухгалтерское сопровождение:</strong> полный цикл + управленческий учет</div>
+        <div><i class="fas fa-clock"></i> <strong>Отклик 24/7</strong> на запросы ФНС</div>
+        <div class="accent-badge"><i class="fas fa-star-of-life"></i> Гарантия качества</div>
+    </div>
+
+    <!-- Футер / контакты (необязательно, но для полноты) -->
+    <footer>
+        <p>© 2025 Окунева Ольга Викторовна — Бухгалтерская экспертиза и консалтинг</p>
+        <p style="margin-top: 0.3rem;"><i class="fas fa-envelope"></i> olga@buh-expert.ru  |  <i class="fas fa-phone-alt"></i> +7 (495) 123-45-67  |  Telegram: @olgabuh</p>
+        <p class="small-meta">Разработано с учётом современных стандартов веб-дизайна и адаптивности</p>
+    </footer>
+</div>
+
+<!-- легкий скрипт для улучшения анимации/качества (необязательный, но для динамики) -->
+<script>
+    // просто добавляем класс при загрузке для плавного появления (необязательно)
+    document.addEventListener('DOMContentLoaded', () => {
+        const cards = document.querySelectorAll('.service-card, .case-block');
+        cards.forEach((card, idx) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(12px)';
+            card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+            setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, idx * 50);
+        });
+    });
+</script>
+</body>
+</html>
